@@ -4,7 +4,7 @@
 
 # 🧠 1. Introduction to Named Entity Recognition
 # Named Entity Recognition (NER) is a process in Natural Language Processing (NLP) where we identify and classify
-# named entities in text into categories such as persons, organizations, locations, dates, etc.
+# named entities in text into categories such as persons, organizations, locations, and dates
 
 # 🧰 2. Install and Import Dependencies
 import spacy
