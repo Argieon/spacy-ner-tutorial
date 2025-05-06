@@ -1,0 +1,650 @@
+
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "deletable": false,
+    "editable": false,
+    "nbgrader": {
+     "cell_type": "markdown",
+     "checksum": "a25678c9993c1c2bbf0167f2ff03c982",
+     "grade": false,
+     "grade_id": "header-instructions",
+     "locked": true,
+     "schema_version": 3,
+     "solution": false,
+     "task": false
+    }
+   },
+   "source": [
+    "## Tips\n",
+    "- To avoid unpleasant surprises, I suggest you _run all cells in their order of appearance_ (__Cell__ $\\rightarrow$ __Run All__).\n",
+    "\n",
+    "\n",
+    "- If the changes you've made to your solution don't seem to be showing up, try running __Kernel__ $\\rightarrow$ __Restart & Run All__ from the menu.\n",
+    "\n",
+    "\n",
+    "- Before submitting your assignment, make sure everything runs as expected. First, restart the kernel (from the menu, select __Kernel__ $\\rightarrow$ __Restart__) and then **run all cells** (from the menu, select __Cell__ $\\rightarrow$ __Run All__).\n",
+    "\n",
+    "## Reminder\n",
+    "\n",
+    "- Make sure you fill in any place that says `YOUR CODE HERE` or \"YOUR ANSWER HERE\", as well as your name, UA email, and collaborators below:\n",
+    "\n",
+    "\n",
+    "\n",
+    "Several of the cells in this notebook are **read only** to ensure instructions aren't unintentionally altered.  \n",
+    "\n",
+    "If you can't edit the cell, it is probably intentional."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "NAME = \"Diana Ayala\"\n",
+    "# University of Arizona email address\n",
+    "EMAIL = \"ayalad@arizona.edu\"\n",
+    "# Names of any collaborators.  Write N/A if none.\n",
+    "COLLABORATORS = \"N/A\""
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "deletable": false,
+    "editable": false,
+    "nbgrader": {
+     "cell_type": "markdown",
+     "checksum": "0783621da2f047c6360f2ec0d56f121c",
+     "grade": false,
+     "grade_id": "cell-e35b85c2416e40f3",
+     "locked": true,
+     "schema_version": 3,
+     "solution": false,
+     "task": false
+    }
+   },
+   "source": [
+    "## Scratchpad\n",
+    "\n",
+    "You are welcome to create new cells (see the __Cell__ menu) to experiment and debug your solution."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "metadata": {
+    "deletable": false,
+    "editable": false,
+    "nbgrader": {
+     "cell_type": "code",
+     "checksum": "c80ac423030cfa372644d7cd456061af",
+     "grade": false,
+     "grade_id": "cell-955f8133afe96b26",
+     "locked": true,
+     "schema_version": 3,
+     "solution": false,
+     "task": false
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "The autoreload extension is already loaded. To reload it, use:\n",
+      "  %reload_ext autoreload\n"
+     ]
+    }
+   ],
+   "source": [
+    "%load_ext autoreload\n",
+    "%autoreload 2"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "deletable": false,
+    "editable": false,
+    "nbgrader": {
+     "cell_type": "markdown",
+     "checksum": "e07f9ac61f4be6a57b6961cde23a6d58",
+     "grade": false,
+     "grade_id": "cell-a2292c2fbc4cf52e",
+     "locked": true,
+     "schema_version": 3,
+     "solution": false,
+     "task": false
+    }
+   },
+   "source": [
+    "# Mini Python tutorial\n",
+    "\n",
+    "This course uses Python 3.8.\n",
+    "\n",
+    "Below is a very basic (and incomplete) overview of the Python language... \n",
+    "\n",
+    "For those completely new to Python, [this section of the official documentation may be useful](https://docs.python.org/3.8/library/stdtypes.html#common-sequence-operations)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "metadata": {
+    "deletable": false,
+    "editable": false,
+    "nbgrader": {
+     "cell_type": "code",
+     "checksum": "bfcd9f827d4855d02514b2e54ba32077",
+     "grade": false,
+     "grade_id": "cell-d6593132353238c5",
+     "locked": true,
+     "schema_version": 3,
+     "solution": false,
+     "task": false
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "h\n",
+      "e\n",
+      "l\n",
+      "l\n",
+      "o\n",
+      "[2, 3, 4, 5]\n",
+      "[2]\n",
+      "hello, Josuke!\n",
+      "Howdy, partner!\n",
+      "13\n",
+      "Hi, Fred!\n",
+      "[('radical', 4), ('analysis', 7), ('bighorn', 12), ('bounce', 32)]\n",
+      "[('analysis', 7), ('bighorn', 12), ('bounce', 32), ('radical', 4)]\n"
+     ]
+    }
+   ],
+   "source": [
+    "# This is a comment.  \n",
+    "# Any line starting with # will be interpreted as a comment\n",
+    "\n",
+    "# this is a string assigned to a variable\n",
+    "greeting = \"hello\"\n",
+    "\n",
+    "# If enclosed in triple quotes, strings can also be multiline:\n",
+    "\n",
+    "\"\"\"\n",
+    "I'm a multiline\n",
+    "string.\n",
+    "\"\"\"\n",
+    "\n",
+    "# let's use a for loop to print it letter by letter\n",
+    "for letter in greeting:\n",
+    "    print(letter)\n",
+    "    \n",
+    "# Did you notice the indentation there?  Whitespace matters in Python!\n",
+    "\n",
+    "# here's a list of integers\n",
+    "\n",
+    "numbers = [1, 2, 3, 4]\n",
+    "\n",
+    "# let's add one to each number using a list comprehension\n",
+    "# and assign the result to a variable called res\n",
+    "# list comprehensions are used widely in Python (they're very Pythonic!)\n",
+    "\n",
+    "res = [num + 1 for num in numbers]\n",
+    "\n",
+    "# let's confirm that it worked\n",
+    "print(res)\n",
+    "\n",
+    "# now let's try spicing things up using a conditional to filter out all values greater than or equal to 3...\n",
+    "print([num for num in res if not num >= 3])\n",
+    "\n",
+    "# Python 3.7 introduced \"f-strings\" as a convenient way of formatting strings using templates\n",
+    "# For example ...\n",
+    "name = \"Josuke\"\n",
+    "\n",
+    "print(f\"{greeting}, {name}!\")\n",
+    "\n",
+    "# f-strings are f-ing convenient!\n",
+    "\n",
+    "\n",
+    "# let's look at defining functions in Python..\n",
+    "\n",
+    "def greet(name):\n",
+    "    print(f\"Howdy, {name}!\")\n",
+    "\n",
+    "# here's how we call it...\n",
+    "\n",
+    "greet(\"partner\")\n",
+    "\n",
+    "# let's add a description of the function...\n",
+    "\n",
+    "def greet(name):\n",
+    "    \"\"\"\n",
+    "    Prints a greeting given some name.\n",
+    "    \n",
+    "    :param name: the name to be addressed in the greeting\n",
+    "    :type name: str\n",
+    "    \n",
+    "    \"\"\"\n",
+    "    print(f\"Howdy, {name}!\")\n",
+    "    \n",
+    "# I encourage you to use docstrings!\n",
+    "\n",
+    "# Python introduced support for optional type hints in v3.5.\n",
+    "# You can read more aobut this feature here: https://docs.python.org/3.8/library/typing.html\n",
+    "# let's give it a try...\n",
+    "def add_six(num: int) -> int:\n",
+    "    return num + 6\n",
+    "\n",
+    "# this should print 13\n",
+    "print(add_six(7))\n",
+    "\n",
+    "# Python also has \"anonymous functions\" (also known as \"lambda\" functions)\n",
+    "# take a look at the following code:\n",
+    "\n",
+    "greet_alt = lambda name: print(f\"Hi, {name}!\")\n",
+    "\n",
+    "greet_alt(\"Fred\")\n",
+    "\n",
+    "# lambda functions are often passed to other functions\n",
+    "# For example, they can be used to specify how a sequence should be sorted\n",
+    "# let's sort a list of pairs by their second element\n",
+    "pairs = [(\"bounce\", 32), (\"bighorn\", 12), (\"radical\", 4), (\"analysis\", 7)]\n",
+    "# -1 is last thing in some sequence, -2 is the second to last thing in some seq, etc.\n",
+    "print(sorted(pairs, key=lambda pair: pair[-1]))\n",
+    "\n",
+    "# we can sort it by the first element instead\n",
+    "# NOTE: python indexing is zero-based\n",
+    "print(sorted(pairs, key=lambda pair: pair[0]))\n",
+    "\n",
+    "# You can learn more about other core data types and their methods here: \n",
+    "# https://docs.python.org/3.8/library/stdtypes.html\n",
+    "\n",
+    "# Because of its extensive standard library, Python is often described as coming with \"batteries included\".  \n",
+    "# Take a look at these \"batteries\": https://docs.python.org/3.8/library/\n",
+    "\n",
+    "# You now know enough to complete this homework assignment (or at least where to look)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "deletable": false,
+    "editable": false,
+    "nbgrader": {
+     "cell_type": "markdown",
+     "checksum": "c7842511e4f9d6335da52887532d5f33",
+     "grade": false,
+     "grade_id": "greetings-explanation",
+     "locked": true,
+     "schema_version": 3,
+     "solution": false,
+     "task": false
+    }
+   },
+   "source": [
+    "# Introduce yourself\n",
+    "\n",
+    "Congratulations on successfully launching the notebook!  That was more than half of the challenge for this assignment. \n",
+    "\n",
+    "Please briefly introduce yourself below.  \n",
+    "\n",
+    "- How would you like your instructor to refer to you?\n",
+    "- Where are you from?  \n",
+    "- What do you hope to learn in this class?  \n",
+    "- What are you career goals?\n",
+    "- Anything else you'd like to share?"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "deletable": false,
+    "nbgrader": {
+     "cell_type": "markdown",
+     "checksum": "5bf02230b28aa66590bd61478aae33d3",
+     "grade": true,
+     "grade_id": "greetings",
+     "locked": false,
+     "points": 0,
+     "schema_version": 3,
+     "solution": true,
+     "task": false
+    }
+   },
+   "source": [
+    "YOUR ANSWER HERE\n",
+    "How would you like your instructor to refer to you? \n",
+    "  --> \"Diana\"\n",
+    "Where are you from? \n",
+    "  --> I grew up in the Phoenix area (east Mesa) and live in Gilbert.\n",
+    "What do you hope to learn in this class? \n",
+    "  --> As much as I can. :)\n",
+    "What are you career goals?\n",
+    "  --> I would like to be a Data Scientist.\n",
+    "Anything else you'd like to share?\n",
+    "  --> Not sure if it was discussed. But perhaps some real world examples of stuff that we learn in class."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "deletable": false,
+    "editable": false,
+    "nbgrader": {
+     "cell_type": "markdown",
+     "checksum": "ea7cf7075d20d5b5e2276e41368de582",
+     "grade": false,
+     "grade_id": "cell-ccf2a7d4cbc6ff64",
+     "locked": true,
+     "schema_version": 3,
+     "solution": false,
+     "task": false
+    }
+   },
+   "source": [
+    "NOTE: several of the cells in this notebook are **read only** to ensure instructions aren't unintentionally altered.  \n",
+    "\n",
+    "If you can't edit the cell, it is probably intentional."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "metadata": {
+    "deletable": false,
+    "editable": false,
+    "nbgrader": {
+     "cell_type": "code",
+     "checksum": "0ec17328860d17c57c2e43a0db3cd3e4",
+     "grade": false,
+     "grade_id": "typehints",
+     "locked": true,
+     "schema_version": 3,
+     "solution": false,
+     "task": false
+    }
+   },
+   "outputs": [],
+   "source": [
+    "from typing import *"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "deletable": false,
+    "editable": false,
+    "nbgrader": {
+     "cell_type": "markdown",
+     "checksum": "347d6f38fed18c7c6f33d946655b654f",
+     "grade": false,
+     "grade_id": "multiply-instructions",
+     "locked": true,
+     "schema_version": 3,
+     "solution": false,
+     "task": false
+    }
+   },
+   "source": [
+    "# Implement `multiply(a, b)`\n",
+    "\n",
+    "To test your understanding of Python basics, implement the following function which should return the product of its parameters `a` and `b`.  Add you solution after the comment **YOUR CODE HERE** and remove the `raise NotImplementedError`.  \n",
+    "\n",
+    "NOTE: _Don't overthink this. It's meant to be easy!_"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "metadata": {
+    "deletable": false,
+    "nbgrader": {
+     "cell_type": "code",
+     "checksum": "7a37a94d5479ce881ce39e39399a74b1",
+     "grade": false,
+     "grade_id": "multiply-problem",
+     "locked": false,
+     "schema_version": 3,
+     "solution": true,
+     "task": false
+    }
+   },
+   "outputs": [],
+   "source": [
+    "def multiply(a: int, b: int) -> int:\n",
+    "    \"\"\"\n",
+    "    Takes two ints and returns their product\n",
+    "    \"\"\"\n",
+    "    # YOUR CODE HERE\n",
+    "    return a * b\n",
+    "    raise NotImplementedError()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 22,
+   "metadata": {
+    "deletable": false,
+    "editable": false,
+    "nbgrader": {
+     "cell_type": "code",
+     "checksum": "a00891f8f1fc67596a385e8f890b742c",
+     "grade": true,
+     "grade_id": "multiply-tests",
+     "locked": true,
+     "points": 3,
+     "schema_version": 3,
+     "solution": false,
+     "task": false
+    }
+   },
+   "outputs": [],
+   "source": [
+    "assert multiply(2, 2) == 4\n",
+    "assert multiply(2, 0) == 0\n",
+    "assert multiply(-1, -1) == 1"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "deletable": false,
+    "editable": false,
+    "nbgrader": {
+     "cell_type": "markdown",
+     "checksum": "e288bb483b491da4d0e1489778ba41df",
+     "grade": false,
+     "grade_id": "count-elements-with-suffix-instructions",
+     "locked": true,
+     "schema_version": 3,
+     "solution": false,
+     "task": false
+    }
+   },
+   "source": [
+    "## Implement `count_distinct_suffix_matches(seq, suffix)`\n",
+    "\n",
+    "Complete the following function which takes a list of strings, finds the distinct elements (types), and counts how many of those types match the provided suffix."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "metadata": {
+    "deletable": false,
+    "nbgrader": {
+     "cell_type": "code",
+     "checksum": "145db6170074e882a75075a439c5c022",
+     "grade": false,
+     "grade_id": "count-elements-with-suffix-implementation",
+     "locked": false,
+     "schema_version": 3,
+     "solution": true,
+     "task": false
+    }
+   },
+   "outputs": [],
+   "source": [
+    "def count_distinct_suffix_matches(seq: Iterable[Text], suffix: Text) -> int:\n",
+    "    \"\"\"\n",
+    "    takes a list of strings, \n",
+    "    finds the distinct elements (types), \n",
+    "    and returns a count of the elements endings with the specified suffix.\n",
+    "    \"\"\"\n",
+    "    # YOUR CODE HERE\n",
+    "    distinct_elements = set(seq)\n",
+    "    count = sum(1 for item in distinct_elements if item.endswith(suffix))\n",
+    "    return count\n",
+    "    raise NotImplementedError()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "metadata": {
+    "deletable": false,
+    "editable": false,
+    "nbgrader": {
+     "cell_type": "code",
+     "checksum": "67305d148393cedc79e69f9ffadcb838",
+     "grade": true,
+     "grade_id": "count-elements-with-suffix-tests",
+     "locked": true,
+     "points": 2,
+     "schema_version": 3,
+     "solution": false,
+     "task": false
+    }
+   },
+   "outputs": [],
+   "source": [
+    "cdsm = count_distinct_suffix_matches\n",
+    "\n",
+    "assert cdsm((\"father\", \"mother\", \"father\", \"fatherly\"), suffix=\"er\") == 2\n",
+    "# an empty suffix \n",
+    "assert cdsm((\"father\", \"mother\", \"father\", \"fatherly\"), suffix=\"\") == 3\n",
+    "assert cdsm((\"father\", \"mother\", \"fatherly\"), suffix=\"\") == 3"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "deletable": false,
+    "editable": false,
+    "nbgrader": {
+     "cell_type": "markdown",
+     "checksum": "ce24b691390fce73ffdbf4392cb62a4d",
+     "grade": false,
+     "grade_id": "weird-request-instructions",
+     "locked": true,
+     "schema_version": 3,
+     "solution": false,
+     "task": false
+    }
+   },
+   "source": [
+    "# Reverse a list and remove the first element\n",
+    "This is exercise is just to illustrate how you can use the test cases to direct your implementation.\n",
+    "\n",
+    "Implement the function `weird_request(seq)` which takes a list of strings, reverses them, drops the element at the front, and returns what remains.\n",
+    "\n",
+    "For those new to Python, [this section of the official documentation may be useful](https://docs.python.org/3.7/library/stdtypes.html#common-sequence-operations)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "metadata": {
+    "deletable": false,
+    "nbgrader": {
+     "cell_type": "code",
+     "checksum": "8cf6cdf3295f89c4c94a7eb529e4c6ee",
+     "grade": false,
+     "grade_id": "weird-request-problem",
+     "locked": false,
+     "schema_version": 3,
+     "solution": true,
+     "task": false
+    }
+   },
+   "outputs": [],
+   "source": [
+    "def weird_request(seq):\n",
+    "    \"\"\"\n",
+    "    takes a list of strings, reverses them, drops the element at the front, and returns what remains.\n",
+    "    \"\"\"\n",
+    "    # YOUR CODE HERE\n",
+    "    reversed_seq = list(reversed(seq))\n",
+    "    return reversed_seq[1:]\n",
+    "    raise NotImplementedError()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "metadata": {
+    "deletable": false,
+    "editable": false,
+    "nbgrader": {
+     "cell_type": "code",
+     "checksum": "e3e9ef65b26f940350db1820ed1812e2",
+     "grade": true,
+     "grade_id": "weird-request-tests",
+     "locked": true,
+     "points": 2,
+     "schema_version": 3,
+     "solution": false,
+     "task": false
+    }
+   },
+   "outputs": [],
+   "source": [
+    "assert weird_request([1,2,3]) == [2,1]\n",
+    "assert weird_request([1]) == []"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.17"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
