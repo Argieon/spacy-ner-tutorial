@@ -7,9 +7,6 @@
 # named entities in text into categories such as persons, organizations, locations, dates, etc.
 
 # 🧰 2. Install and Import Dependencies
-!pip install -q spacy
-!python -m spacy download en_core_web_sm
-
 import spacy
 from spacy import displacy
 
