@@ -28,7 +28,7 @@ displacy.render(doc, style="ent", jupyter=True)
 
 
 ## 🛠️ 7. Customize NER: Add New Entity Labels
-# This part would typically involve training, but here’s how you can add patterns for specific matches
+This part would typically involve training, but here’s how you can add patterns for specific matches
 from spacy.pipeline import EntityRuler
 
 ruler = nlp.add_pipe("entity_ruler", before="ner")
