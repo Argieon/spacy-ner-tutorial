@@ -1,1 +1,28 @@
+# 📘 Final Assignment - spaCy NER Tutorial
+
+# 🧠 Instructions:
+# - Use this notebook to complete your final assignment.
+# - Follow the template below or modify as needed.
+# - Be sure to explain each step and include code + output.
+
+# 1. Import Dependencies
+import spacy
+from spacy import displacy
+
+# 2. Load spaCy Model
+nlp = spacy.load("en_core_web_sm")  # You can change the model if needed
+
+# 3. Sample Text
+text = "Add your custom text here for entity recognition."
+doc = nlp(text)
+
+# 4. Print Named Entities
+for ent in doc.ents:
+    print(f"{ent.text:25} -> {ent.label_} ({spacy.explain(ent.label_)})")
+
+# 5. Visualize Entities
+displacy.render(doc, style="ent", jupyter=True)
+
+# 6. Your Custom Analysis Below
+# (e.g., extract ORG entities, apply EntityRuler, etc.)
 
