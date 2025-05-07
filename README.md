@@ -1,55 +1,45 @@
 # spacy-ner-tutorial
 Beginner friendly tutorial for spaCy Named Entity Recognition (NER). Please follow the instructions below on how to create an NER.
 
-## 🧠 1. Introduction to Named Entity Recognition
+## 🧠 Introduction to Named Entity Recognition 🧠 
 Named Entity Recognition (NER) is a process in Natural Language Processing (NLP) where we identify and classify
 named entities in text into categories such as persons, organizations, locations, dates, etc.
 
 
-## 🧰 2. Install and Import Dependencies
-import spacy
-from spacy import displacy
+## 🧰 1. Install and Import Dependencies
+This step ensures you have the necessary tools to work with spaCy. You import the spaCy library itself and displacy, 
+which is a built-in visualization tool used to display named entities in text.
 
-## 📥 3. Load a Pre-trained spaCy Model
-nlp = spacy.load("en_core_web_sm")
+## 📥 2. Load a Pre-trained spaCy Model
+spaCy provides pre-trained language models that already understand grammar, entities, and more. Here, you're loading the English
+model en_core_web_sm so you can process English text and extract named entities right away.
 
+## 📝 3. Input Sample Text
+You pass a sample sentence into the model, which processes the text and analyzes it for linguistic features. 
+The result is stored in a doc object that contains all the tokens, parts of speech, and named entities.
 
-## 📝 4. Input Sample Text
-doc = nlp("Apple is looking at buying a U.K. startup for $1 billion. Elon Musk founded SpaceX in 2002.")
-
-
-## 🔍 5. Named Entities Recognition Results
-for ent in doc.ents:
-    print(f"{ent.text:30} -> {ent.label_} ({spacy.explain(ent.label_)})")
+## 🔍 4. Named Entities Recognition Results
+This loop goes through all the named entities spaCy found in the text and prints each one along with its label (like PERSON or ORG). 
+It also uses spacy.explain() to give a human-readable explanation of each label.
     
-
-## 👁️ 6. Visualize the Named Entities
-displacy.render(doc, style="ent", jupyter=True)
-
-
-## 🛠️ 7. Customize NER: Add New Entity Labels
-This part would typically involve training, but here’s how you can add patterns for specific matches
-from spacy.pipeline import EntityRuler
-
-ruler = nlp.add_pipe("entity_ruler", before="ner")
-ruler.add_patterns([
-    {"label": "FOUNDER", "pattern": "Elon Musk"},
-    {"label": "COMPANY", "pattern": "SpaceX"},
-])
-
-custom_doc = nlp("Elon Musk is the founder of SpaceX and Tesla.")
-displacy.render(custom_doc, style="ent", jupyter=True)
+## 👁️ 5. Visualize the Named Entities
+Using spaCy’s displacy.render, this step creates a colorful, interactive visualization of the named entities directly in your notebook. 
+It helps you clearly see which words spaCy has labeled and how.
 
 
-## 💡 8. Practical Use Case: Extracting Company Names
-example_text = "Google, Microsoft, and OpenAI are leading companies in AI research."
-doc = nlp(example_text)
+## 🛠️ 6. Customize NER: Add New Entity Labels
+You can extend spaCy’s default NER by using an EntityRuler, which lets you define custom patterns (like "Elon Musk" as a FOUNDER). 
+This is helpful when spaCy’s built-in model doesn’t recognize specific terms important to your use case.
 
-companies = [ent.text for ent in doc.ents if ent.label_ == "ORG"]
-print("Extracted Companies:", companies)
+##  7. Practical Use Case: Extracting Company Names
+This example shows how you can filter the recognized entities to focus on specific types—like companies (ORG). 
+It demonstrates a practical application, such as pulling organization names from news articles.
+
+## 📘 8. Conclusion
+spaCy’s tools make it easy to get started with named entity recognition, even with no prior NLP experience. A
+s you grow more confident, you can build more advanced models by training spaCy on your own data.
 
 
-## 📘 9. Conclusion
-spaCy makes it easy to get started with NER, and you can extend it with rule-based or statistical models.
-For production-grade customization, consider training spaCy models with your own labeled data.
+
+
 
