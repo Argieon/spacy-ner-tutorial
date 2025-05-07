@@ -9,6 +9,20 @@ named entities in text into categories such as persons, organizations, locations
 ## 🧰 2. Install and Import Dependencies
 import spacy
 from spacy import displacy
+{
+   "cell_type": "code",
+   "execution_count": 17,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "NAME = \"Diana Ayala\"\n",
+    "# University of Arizona email address\n",
+    "EMAIL = \"ayalad@arizona.edu\"\n",
+    "# Names of any collaborators.  Write N/A if none.\n",
+    "COLLABORATORS = \"N/A\""
+   ]
+  }
+
 
 
 ## 📥 3. Load a Pre-trained spaCy Model
