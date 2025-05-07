@@ -3,7 +3,7 @@
 # 🧠 Instructions:
 # - Use this notebook to run the final assignment "spaCy NER Tutorial."
 # - Follow the template below or modify as needed.
-# - Be sure to read through the instructions and explanations README.md file. 
+# - Be sure to read through the explanations in README.md file. 
 
 # 1. Import Dependencies
 import spacy
